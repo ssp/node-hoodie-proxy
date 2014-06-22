@@ -1,0 +1,20 @@
+{
+	"name": "hoodie-proxy",
+	"version": "0.0.0",
+	"description": "http Proxy to use Hoodie behind apache",
+	"main": "index.js",
+	"dependencies": {
+		"http": "*",
+		"http-proxy": "^1.1.4"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"hoodie",
+		"apache",
+		"proxy"
+	],
+	"author": "Sven-S. Porst",
+	"license": "MIT"
+}
