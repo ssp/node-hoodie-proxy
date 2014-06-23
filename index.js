@@ -1,3 +1,24 @@
+#!/usr/bin/env node
+
+var opts = require('nomnom')
+	.option('port', {
+		abbr: 'p',
+		default: 6010,
+		help: 'Port to listen on'
+	})
+	.option('target', {
+		abbr: 't',
+		default: 'http://127.0.0.1:6001/',
+		help: 'Hoodie URL to proxy to'
+	})
+	.parse();
+
+var myPort = opts['port'];
+var target = opts['target'];
+
+console.log('Proxying from :' + myPort + ' to ' + target);
+
+
 var proxy = require('http-proxy').createProxyServer({});
 
 var server = require('http').createServer(function(req, res) {
@@ -21,7 +42,7 @@ var server = require('http').createServer(function(req, res) {
 	logString += ' -> ' + req.url;
 	console.log(logString);
 	
-	proxy.web(req, res, { target: 'http://127.0.0.1:6007' });
+	proxy.web(req, res, { target:target });
 	
 	proxy.on('error', function (error) {
 		res.writeHead(500, {
@@ -32,4 +53,4 @@ var server = require('http').createServer(function(req, res) {
 	});
 });
 
-server.listen(62455);
+server.listen(myPort);

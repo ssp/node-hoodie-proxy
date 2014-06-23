@@ -27,6 +27,14 @@ The setup then is, with hoodie-proxy being able to access the port Hoodie runs o
 User → Apache with `mod_rewrite` reverse proxy → hoodie-proxy → Hoodie
 
 
+## Usage
+
+hoodie-proxy uses two parameters
+
+* `--port [-p]`: the port to open the proxy on [`6010`]
+* `--target [-t]`: the base URL to proxy to [`http://127.0.0.1:6001`]
+
+
 ## Contact
 
 2014 by Sven-S. Porst <[ssp-web@earthlingsoft.net](mailto:ssp-web@earthlingsoft.net)>

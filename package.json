@@ -4,8 +4,8 @@
 	"description": "http Proxy to use Hoodie behind Apache on shared hosting",
 	"main": "index.js",
 	"dependencies": {
-		"http": "*",
-		"http-proxy": "^1.1.4"
+		"http-proxy": "^1.1.4",
+		"nomnom": "^1.7.0"
 	},
 	"repository": {
 		"type": "git",
