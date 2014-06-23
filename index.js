@@ -1,10 +1,23 @@
 var proxy = require('http-proxy').createProxyServer({});
 
 var server = require('http').createServer(function(req, res) {
-	// You can define here your custom logic to handle the request
-	// and then proxy the request.
 	var logString = req.url;
-	req.url = req.url.replace(/^\/_api\/user\//, '/_api/user%2F');
+
+	var pathComponents = req.url.split('/');
+	if (pathComponents.length >= 4) {
+		if (pathComponents[1] === '_api') {
+			if (pathComponents[2] === 'user') {
+				pathComponents.splice(2, 2, 'user%2F' + pathComponents[3]);
+			}
+			
+			if (pathComponents.length >= 5) {
+				pathComponents.splice(3, 2, pathComponents[3] + '%2F' + 				pathComponents[4]);
+			}
+			
+			req.url = pathComponents.join('/');
+		}
+	}
+
 	logString += ' -> ' + req.url;
 	console.log(logString);
 	
